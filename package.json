@@ -1,0 +1,51 @@
+{
+  "name": "whats-covery",
+  "version": "1.0.0",
+  "description": "WhatsApp Recovery Web App - Recover, view, and export WhatsApp data with a futuristic cyberpunk UI",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "lint": "eslint src --ext js,jsx",
+    "format": "prettier --write src/**/*.{js,jsx,json,css}"
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.20.0",
+    "zustand": "^4.4.7",
+    "sql.js": "^1.8.0",
+    "framer-motion": "^10.16.16",
+    "@heroicons/react": "^2.1.1",
+    "comlink": "^4.4.1",
+    "gapi-script": "^1.2.0",
+    "jszip": "^3.10.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^4.2.1",
+    "vite": "^5.0.8",
+    "tailwindcss": "^3.4.0",
+    "postcss": "^8.4.32",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "^7.33.2",
+    "prettier": "^3.1.1"
+  },
+  "author": "tabrezahmed51",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tabrezahmed51/whats-covery.git"
+  },
+  "keywords": [
+    "whatsapp",
+    "recovery",
+    "data-recovery",
+    "react",
+    "vite",
+    "tailwindcss",
+    "google-sheets",
+    "cyberpunk"
+  ]
+}
