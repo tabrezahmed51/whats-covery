@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Whats-Covery - WhatsApp Recovery Tool</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Fira Code', 'Courier New', monospace;
+            background: linear-gradient(135deg, #0f0f2a 0%, #1a1a3e 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            text-align: center;
+            animation: fadeIn 1s ease-in;
+        }
+        
+        h1 {
+            font-size: 3.5rem;
+            background: linear-gradient(90deg, #00ffea 0%, #00a8ff 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(0, 255, 234, 0.5);
+            margin-bottom: 1rem;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+        
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 20px rgba(0, 255, 234, 0.5);
+            }
+            to {
+                text-shadow: 0 0 40px rgba(0, 255, 234, 0.8), 0 0 60px rgba(0, 255, 234, 0.6);
+            }
+        }
+        
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #00ffea;
+            margin-bottom: 2rem;
+        }
+        
+        .description {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            color: #b8b8d4;
+            margin-bottom: 3rem;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(0, 255, 234, 0.3);
+            border-radius: 10px;
+            padding: 1.5rem;
+            transition: all 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            background: rgba(0, 255, 234, 0.1);
+            border-color: #00ffea;
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 255, 234, 0.3);
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-title {
+            font-size: 1.1rem;
+            color: #00ffea;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature-desc {
+            font-size: 0.9rem;
+            color: #b8b8d4;
+        }
+        
+        .status {
+            background: rgba(255, 193, 7, 0.1);
+            border: 1px solid #ffc107;
+            border-radius: 8px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        
+        .status-title {
+            color: #ffc107;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+        
+        .status-text {
+            color: #b8b8d4;
+        }
+        
+        .buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .btn {
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: 2px solid #00ffea;
+            background: rgba(0, 255, 234, 0.1);
+            color: #00ffea;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+        
+        .btn:hover {
+            background: #00ffea;
+            color: #0f0f2a;
+            box-shadow: 0 0 20px rgba(0, 255, 234, 0.5);
+        }
+        
+        .btn-secondary {
+            border-color: #b8b8d4;
+            color: #b8b8d4;
+            background: rgba(184, 184, 212, 0.1);
+        }
+        
+        .btn-secondary:hover {
+            background: #b8b8d4;
+            color: #0f0f2a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔧 Whats-Covery</h1>
+        <p class="subtitle">WhatsApp Data Recovery & Export Tool</p>
+        
+        <div class="status">
+            <div class="status-title">⚠️ Development in Progress</div>
+            <p class="status-text">This web application is currently under active development. The full React + Vite application with all features will be available soon!</p>
+        </div>
+        
+        <p class="description">
+            A powerful WhatsApp recovery tool with a futuristic cyberpunk UI. 
+            Recover, view, and export your WhatsApp data with advanced features 
+            including selective scanning, de-duplication, and cloud backup integration.
+        </p>
+        
+        <div class="features">
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <div class="feature-title">Selective Scanning</div>
+                <div class="feature-desc">Target specific WhatsApp folders for faster recovery</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">⚡</div>
+                <div class="feature-title">Incremental Recovery</div>
+                <div class="feature-desc">Skip already recovered files to save time</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🎨</div>
+                <div class="feature-title">WhatsApp-Style UI</div>
+                <div class="feature-desc">Familiar interface for viewing recovered data</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">📦</div>
+                <div class="feature-title">ZIP Export</div>
+                <div class="feature-desc">Export recovered data as organized archives</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">🌙</div>
+                <div class="feature-title">Cyberpunk Theme</div>
+                <div class="feature-desc">Futuristic neon-accented design</div>
+            </div>
+            
+            <div class="feature-card">
+                <div class="feature-icon">☁️</div>
+                <div class="feature-title">Cloud Backend</div>
+                <div class="feature-desc">Google Sheets metadata storage</div>
+            </div>
+        </div>
+        
+        <div class="buttons">
+            <a href="https://github.com/tabrezahmed51/whats-covery" class="btn" target="_blank">
+                👁️ View on GitHub
+            </a>
+            <a href="https://github.com/tabrezahmed51/whats-covery#-quick-start" class="btn btn-secondary" target="_blank">
+                📖 Documentation
+            </a>
+        </div>
+    </div>
+</body>
+</html>
