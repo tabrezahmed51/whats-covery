@@ -25,7 +25,7 @@
         
         .container {
             max-width: 900px;
-            text-align: center;
+            Selective Scanningtext-align: center;
             animation: fadeIn 1s ease-in;
         }
         
@@ -52,7 +52,7 @@
         @keyframes fadeIn {
             from {
                 opacity: 0;
-                transform: translateY(30px);
+                transform: translateY(3Selective Scanning1px);
             }
             to {
                 opacity: 1;
@@ -79,7 +79,7 @@
             gap: 1.5rem;
             margin-bottom: 3rem;
         }
-        
+       class="feature-title">Selective 
         .feature-card {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(0, 255, 234, 0.3);
@@ -188,49 +188,92 @@
         <div class="features">
             <div class="feature-card">
                 <div class="feature-icon">📱</div>
-                <div class="feature-title">Selective Scanning</div>
+                <div class="feature-title">Scan</div>
                 <div class="feature-desc">Target specific WhatsApp folders for faster recovery</div>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">⚡</div>
-                <div class="feature-title">Incremental Recovery</div>
+                <div class="feature-title">Smart Scan</div>
                 <div class="feature-desc">Skip already recovered files to save time</div>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">🎨</div>
-                <div class="feature-title">WhatsApp-Style UI</div>
+                <div class="feature-title">Preview</div>
                 <div class="feature-desc">Familiar interface for viewing recovered data</div>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">📦</div>
-                <div class="feature-title">ZIP Export</div>
+                <div class="feature-title">Export/div>
                 <div class="feature-desc">Export recovered data as organized archives</div>
             </div>
             
             <div class="feature-card">
                 <div class="feature-icon">🌙</div>
-                <div class="feature-title">Cyberpunk Theme</div>
-                <div class="feature-desc">Futuristic neon-accented design</div>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">☁️</div>
-                <div class="feature-title">Cloud Backend</div>
-                <div class="feature-desc">Google Sheets metadata storage</div>
-            </div>
+                <div class="feature-title">Settings</div>
+                <div class="feature-desc">Documentation222View on GitHubinput type="checkbox" id="autoExport">
+            <span>Auto-export recovered chats</span>
+          </label>
         </div>
-        
-        <div class="buttons">
-            <a href="https://github.com/tabrezahmed51/whats-covery" class="btn" target="_blank">
-                👁️ View on GitHub
-            </a>
-            <a href="https://github.com/tabrezahmed51/whats-covery#-quick-start" class="btn btn-secondary" target="_blank">
-                📖 Documentation
-            </a>
+        <div class="setting-group">
+          <h4>Recovery Options</h3>
+          <label>
+            <input type="checkbox" id="includeMedia" checked>
+            <span>Include media files in recovery</span>
+          </label>
+          <label>
+            <input type="checkbox" id="deduplication" checked>
+            <span>Enable message de-duplication</span>
+          </label>
         </div>
+        <div class="setting-group">
+          <h4>About</h3>
+          <p>Whats-Covery v2.0.0</p>
+          <p>A powerful WhatsApp recovery tool with cyberpunk UI</p>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button onclick="saveSettings()" class="btn">Save Settings</button>
+        <button onclick="closeSettings()" class="btn" style="background: #667;">Cancel</button>
+      </div>
     </div>
-</body>
-</html>
+  </div>
+
+  <script>
+    function openSettings() {
+      document.getElementById('settingsModal').style.display = 'flex';
+    }
+    
+    function closeSettings() {
+      document.getElementById('settingsModal').style.display = 'none';
+    }
+    
+    function saveSettings() {
+      // Save settings to localStorage
+      localStorage.setItem('darkMode', document.getElementById('darkMode').checked);
+      localStorage.setItem('autoExport', document.getElementById('autoExport').checked);
+      localStorage.setItem('includeMedia', document.getElementById('includeMedia').checked);
+      localStorage.setItem('deduplication', document.getElementById('deduplication').checked);
+      alert('Settings saved successfully!');
+      closeSettings();
+    }
+    
+    // Load settings on page load
+    window.onload = function() {
+      document.getElementById('darkMode').checked = localStorage.getItem('darkMode') !== 'false';
+      document.getElementById('autoExport').checked = localStorage.getItem('autoExport') === 'true';
+      document.getElementById('includeMedia').checked = localStorage.getItem('includeMedia') !== 'false';
+      document.getElementById('deduplication').checked = localStorage.getItem('deduplication') !== 'false';
+    };
+    
+    // Close modal when clicking outside
+    window.onclick = function(event) {
+      const modal = document.getElementById('settingsModal');
+      if (event.target == modal) {
+        closeSettings();
+      }
+    };
+  </script></html>
+<button314View on GitHub
