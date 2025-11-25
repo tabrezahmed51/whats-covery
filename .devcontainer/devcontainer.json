@@ -1,0 +1,33 @@
+{
+  "name": "WhatsApp Recovery Dev Container",
+  "image": "mcr.microsoft.com/devcontainers/javascript-node:1-20-bullseye",
+  
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {},
+    "ghcr.io/devcontainers/features/github-cli:1": {}
+  },
+
+  "customizations": {
+    "vscode": {
+      "settings": {
+        "terminal.integrated.defaultProfile.linux": "bash"
+      },
+      "extensions": [
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "bradlc.vscode-tailwindcss",
+        "dsznajder.es7-react-js-snippets",
+        "formulahendry.auto-rename-tag",
+        "naumovs.color-highlight"
+      ]
+    }
+  },
+
+  "forwardPorts": [5173, 3000],
+  
+  "postCreateCommand": "npm install",
+  
+  "postStartCommand": "echo 'Dev container is ready! Run npm run dev to start the development server.'",
+  
+  "remoteUser": "node"
+}
