@@ -6,7 +6,7 @@ class AIChatModal {
         this.isOpen = false;
         this.messages = [];
         this.currentModel = 'deepseek/deepseek-r1:free';
-        this.apiKey = ''; // User needs to set their OpenRouter API key
+        this.apiKey = 'sk-or-v1-9cd30bee2c8b1ca9eb4632382536d1607c'; // User needs to set their OpenRouter API key
         
         // Free models available on OpenRouter
         this.models = [
