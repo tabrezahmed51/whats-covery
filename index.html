@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Whats-Covery - WhatsApp Recovery Tool</title>
-    <style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Whats-Covery - WhatsApp Recovery Tool</title>
+  <style>
         * {
             margin: 0;
             padding: 0;            box-sizing: border-box;
@@ -143,85 +143,92 @@
             background: #b8b8d4;
             color: #0f0f2a;
         }
-    </style>
-        <link rel="stylesheet" href="src/ai-chat.css">
+  </style>
+  <link rel="stylesheet" href="src/ai-chat.css">
 </head>
 <body>
-    <div class="container">
-        <h1>🔧 Whats-Covery</h1>
-        <p class="subtitle">WhatsApp Data Recovery & Export Tool</p>
-        
-        <div class="status">
-            <div class="status-title">⚠️ Development in Progress</div>
-            <p class="status-text">This web application is currently under active development. The full React + Vite application with all features will be available soon!</p>
+  <div class="container">
+    <h1>🔧 Whats-Covery</h1>
+    <p class="subtitle">WhatsApp Data Recovery & Export Tool</p>
+    <div class="status">
+      <div class="status-title">
+        ⚠️ Development in Progress
+      </div>
+      <p class="status-text">This web application is currently under active development. The full React + Vite application with all features will be available soon!</p>
+    </div>
+    <p class="description">A powerful WhatsApp recovery tool with a futuristic cyberpunk UI. Recover, view, and export your WhatsApp data with advanced features including selective scanning, de-duplication, and cloud backup integration.</p>
+    <div class="features">
+      <div class="feature-card">
+        <div class="feature-icon">
+          📱
         </div>
-        
-        <p class="description">
-            A powerful WhatsApp recovery tool with a futuristic cyberpunk UI. 
-            Recover, view, and export your WhatsApp data with advanced features 
-            including selective scanning, de-duplication, and cloud backup integration.
-        </p>
-        
-        <div class="features">
-            <div class="feature-card">
-                <div class="feature-icon">📱</div>
-                <div class="feature-title">Scan</div>
-                <div class="feature-desc">Target specific WhatsApp folders for faster recovery</div>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">⚡</div>
-                <div class="feature-title">Smart Scan</div>
-                <div class="feature-desc">Skip already recovered files to save time</div>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🎨</div>
-                <div class="feature-title">Preview</div>
-                <div class="feature-desc">Familiar interface for viewing recovered data</div>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">📦</div>
-                <div class="feature-title">Export/div>
-                <div class="feature-desc">Export recovered data as organized archives</div>
-            </div>
-            
-            <div class="feature-card">
-                <div class="feature-icon">🌙</div>
-                <div class="feature-title">Settings</div>
-                <div class="feature-desc"><a href="https://github.com/tabrezahmed51/whats-covery" target="_blank" style="color: #0ff; text-decoration: none;">📄 View Documentation on GitHub</a>
-                </div>
-                <label for="autoExport" style="display: block; margin-top: 15px; color: #b8b8d4;">
-                    <input type="checkbox" id="autoExport" style="margin-right: 8px;">
-            <span>Auto-export recovered chats</span>
-          </label>
+        <div class="feature-title">
+          Scan
+        </div>
+        <div class="feature-desc">
+          Target specific WhatsApp folders for faster recovery
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          ⚡
+        </div>
+        <div class="feature-title">
+          Smart Scan
+        </div>
+        <div class="feature-desc">
+          Skip already recovered files to save time
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          🎨
+        </div>
+        <div class="feature-title">
+          Preview
+        </div>
+        <div class="feature-desc">
+          Familiar interface for viewing recovered data
+        </div>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">
+          📦
+        </div>
+        <div class="feature-title">
+          Export/div&gt;
+          <div class="feature-desc">
+            Export recovered data as organized archives
+          </div>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">
+            🌙
+          </div>
+          <div class="feature-title">
+            Settings
+          </div>
+          <div class="feature-desc">
+            <a href="https://github.com/tabrezahmed51/whats-covery" target="_blank" style="color: #0ff; text-decoration: none;">📄 View Documentation on GitHub</a>
+          </div><label for="autoExport" style="display: block; margin-top: 15px; color: #b8b8d4;"><input type="checkbox" id="autoExport" style="margin-right: 8px;"> <span>Auto-export recovered chats</span></label>
         </div>
         <div class="setting-group">
-          <h4>Recovery Options</h3>
-          <label>
-            <input type="checkbox" id="includeMedia" checked>
-            <span>Include media files in recovery</span>
-          </label>
-          <label>
-            <input type="checkbox" id="deduplication" checked>
-            <span>Enable message de-duplication</span>
-          </label>
+          <h4>Recovery Options</h4><label><input type="checkbox" id="includeMedia" checked> <span>Include media files in recovery</span></label> <label><input type="checkbox" id="deduplication" checked> <span>Enable message de-duplication</span></label>
         </div>
         <div class="setting-group">
-          <h4>About</h3>
+          <h4>About</h4>
           <p>Whats-Covery v2.0.0</p>
           <p>A powerful WhatsApp recovery tool with cyberpunk UI</p>
         </div>
       </div>
       <div class="modal-footer">
-        <button onclick="saveSettings()" class="btn">Save Settings</button>
-        <button onclick="closeSettings()" class="btn" style="background: #667;">Cancel</button>
+        <button onclick="saveSettings()" class="btn">Save Settings</button> <button onclick="closeSettings()" class="btn" style="background: #667;">Cancel</button>
       </div>
     </div>
-  </div>
-216
+  </div>216 
   <script>
+
+
     function openSettings() {
       document.getElementById('settingsModal').style.display = 'flex';
     }
@@ -255,7 +262,6 @@
         closeSettings();
       }
     };
-  </script
-          <script src="src/ai-chat.js"></script>
-</body>></html>
-<button314View on GitHub
+  </script>&gt;
+</body>
+</html>
