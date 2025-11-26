@@ -7,6 +7,35 @@ class AIChatModal {
         this.messages = [];
         this.currentModel = 'deepseek/deepseek-r1:free';
         this.apiKey = 'sk-or-v1-9cd30bee2c8b1ca9eb4632382536d1607c'; // User needs to set their OpenRouter API key
+
+                // Multi-provider configuration
+        this.providers = {
+            openrouter: {
+                name: 'OpenRouter',
+                apiKey: 'sk-or-v1-9cd30bee2c8b1ca9eb4632382536d1607c',
+                endpoint: 'https://openrouter.ai/api/v1/chat/completions',
+                enabled: true
+            },
+            openai: {
+                name: 'OpenAI',
+                apiKey: 'sk-proj-wnK3dOIlOSeMaJR5AbQsHBqrU',
+                endpoint: 'https://api.openai.com/v1/chat/completions',
+                enabled: true
+            },
+            huggingface: {
+                name: 'Hugging Face',
+                apiKey: 'hf_FnF6yoIxJAMUqDueWDibJzjyjZOyKIhICA',
+                endpoint: 'https://api-inference.huggingface.co/models/',
+                enabled: true
+            },
+            groq: {
+                name: 'Groq',
+                apiKey: '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',
+                endpoint: 'https://api.groq.com/openai/v1/chat/completions',
+                enabled: true
+            }
+        };
+        this.currentProvider = 'openrouter'; // Default provider
         
         // Free models available on OpenRouter
         this.models = [
@@ -268,6 +297,40 @@ class AIChatModal {
         }
     }
 }
+
+    // Provider management methods
+    switchProvider(providerName) {
+        if (this.providers[providerName] && this.providers[providerName].enabled) {
+            this.currentProvider = providerName;
+            this.apiKey = this.providers[providerName].apiKey;
+            console.log(`Switched to provider: ${this.providers[providerName].name}`);
+            return true;
+        }
+        console.error(`Provider ${providerName} not available`);
+        return false;
+    }
+
+    getProvidersList() {
+        return Object.keys(this.providers).map(key => ({
+            id: key,
+            name: this.providers[key].name,
+            enabled: this.providers[key].enabled,
+            isActive: key === this.currentProvider
+        }));
+    }
+
+    updateProviderKey(providerName, newApiKey) {
+        if (this.providers[providerName]) {
+            this.providers[providerName].apiKey = newApiKey;
+            if (this.currentProvider === providerName) {
+                this.apiKey = newApiKey;
+            }
+            // Save to localStorage
+            localStorage.setItem(`aiProvider_${providerName}_key`, newApiKey);
+            return true;
+        }
+        return false;
+    }
 
 // Initialize AI Chat Modal when DOM is loaded
 if (document.readyState === 'loading') {
