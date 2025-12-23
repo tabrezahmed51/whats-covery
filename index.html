@@ -599,7 +599,7 @@
         // ============================================
         // CORE RECOVERY ENGINE MODULES
         // ============================================
-
+630
         // FILE SCANNER MODULE
         const FileScanner = 650{
             695async scanFolder(folderHandle) {
@@ -631,4 +631,99 @@
                 return 'other';
             }
         };</body>
-</html>
+// UI HANDLER
+const UIHandler = {
+    showNotification: function(msg) {
+        let div = document.createElement('div');
+        div.textContent = msg;
+        div.style.cssText = 'position:fixed;top:20px;right:20px;padding:15px;background:#00ffea;border-radius:8px;z-index:9999;color:#000;';
+        document.body.appendChild(div);
+        setTimeout(function() { div.remove(); }, 4000);
+    }
+};
+
+// EXPORT MODULE
+const ExportModule = {
+    exportJSON: function(data) {
+        let json = JSON.stringify(data, null, 2);
+        this.download(json, 'recovery.json', 'application/json');
+    },
+    download: function(content, filename, mime) {
+        let blob = new Blob([content], {type: mime});
+        let url = URL.createObjectURL(blob);
+        let a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+};
+
+// ADMIN PORTAL
+const AdminPortal = {
+    authenticate: function(pwd) {
+        let stored = localStorage.getItem('adminPassword') || 'admin123';
+        return pwd === stored;
+    },
+    recordRecovery: function(count) {
+        let total = parseInt(localStorage.getItem('totalMessages') || '0') + count;
+        localStorage.setItem('totalMessages', total);
+        localStorage.setItem('lastRecovery', new Date().toISOString());
+    },
+    getStats: function() {
+        return {
+            messages: parseInt(localStorage.getItem('totalMessages') || '0'),
+            lastRecovery: localStorage.getItem('lastRecovery') || 'Never'
+        };
+    }
+};
+
+// SCAN FUNCTION
+async function scanDirectory(folder, results) {
+    if (!results) results = {files: [], errors: []};
+    try {
+        for await (const entry of folder.entries()) {
+            const name = entry[0].toLowerCase();
+            if (entry[1].kind === 'file') {
+                if (name.includes('msgstore') || name.includes('wa.db')) {
+                    const file = await entry[1].getFile();
+                    results.files.push({name: entry[0], size: file.size});
+                }
+            } else if (entry[1].kind === 'directory') {
+                if (name.includes('whatsapp') || name.includes('media')) {
+                    try {
+                        await scanDirectory(entry[1], results);
+                    } catch(e) {
+                        results.errors.push(entry[0]);
+                    }
+                }
+            }
+        }
+    } catch(e) {
+        results.errors.push('Scan error: ' + e.message);
+    }
+    return results;
+}
+
+// EVENT LISTENERS
+window.addEventListener('DOMContentLoaded', function() {
+    let scanBtn = document.querySelector('[data-action]');
+    if (scanBtn) {
+        scanBtn.addEventListener('click', async function() {
+            try {
+                let folder = await window.showDirectoryPicker();
+                if (!folder) return;
+                UIHandler.showNotification('Scanning folder...');
+                let results = await scanDirectory(folder);
+                if (results.files.length > 0) {
+                    UIHandler.showNotification('Found ' + results.files.length + ' files!');
+                    AdminPortal.recordRecovery(results.files.length);
+                }
+            } catch(e) {
+                UIHandler.showNotification('Error: ' + e.message);
+            }
+        });
+    }
+});</html>
