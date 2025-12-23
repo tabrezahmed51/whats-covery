@@ -596,5 +596,39 @@
             }
         });
     </script>
-</body>
+        // ============================================
+        // CORE RECOVERY ENGINE MODULES
+        // ============================================
+
+        // FILE SCANNER MODULE
+        const FileScanner = 650{
+            695async scanFolder(folderHandle) {
+                const results = { files: [], errors: [] };
+                try {
+                    for await (const entry of folderHandle.entries()) {
+                        if (entry[1].kind === 'file') {
+                            const name = entry[0].toLowerCase();
+                            if (name.includes('msgstore') || name.includes('wa.db') || 
+                                name.includes('chatsettings') || name.includes('backup')) {
+                                results.files.push({
+                                    name: entry[0],
+                                    handle: entry[1],
+                                    size: (await entry[1].getFile()).size,
+                                    type: this.detectFileType(entry[0])
+                                });
+                            }
+                        }
+                    }
+                } catch (e) {
+                    results.errors.push('Scan error: ' + e.message);
+                }
+                return results;
+            },
+            detectFileType(filename) {
+                if (filename.includes('msgstore')) return 'database';
+                if (filename.includes('wa.db')) return 'database';
+                if (filename.includes('settings')) return 'settings';
+                return 'other';
+            }
+        };</body>
 </html>
