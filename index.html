@@ -176,8 +176,8 @@
             margin-bottom: 15px;
             font-size: 1.1rem;
         }
-
-        .setting-item {
+Scan Device
+        260.setting-item {
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -207,8 +207,8 @@
 
         .footer a {
             color: #00ffea;
-            text-decoration: none;
-            margin: 0 10px;
+            <buttontext-decoration: none;
+            margin: card-button1 10px;
         }
 
         .footer a:hover {
@@ -243,9 +243,9 @@
         <p class="description">A powerful WhatsApp recovery tool with a futuristic cyberpunk interface. Scan, recover, and export your WhatsApp data with advanced AI-powered features.</p>
 
         <div class="features">
-            <div class="feature-card">
+            <div class="feature-card"class="feature-card"></div>>
                 <div class="feature-icon">📱</div>
-                <div class="feature-title">Scan</div>
+                <div class="feature-title"246/div>
                 <div class="feature-desc">Target specific WhatsApp folders for faster recovery</div>
             </div>
 
@@ -727,3 +727,29 @@ window.addEventListener('DOMContentLoaded', function() {
         });
     }
 });</html>
+// Export handler
+document.querySelectorAll('.feature-card').forEach(function(card) {
+    let title = card.querySelector('.feature-title');
+    if (title && title.textContent.includes('Export')) {
+        card.addEventListener('click', function() {
+            ExportModule.exportJSON({timestamp: new Date().toISOString()});
+            UIHandler.showNotification('Export started');
+        });
+    }
+});
+
+// Admin handler
+document.querySelectorAll('.feature-card').forEach(function(card) {
+    let title = card.querySelector('.feature-title');
+    if (title && title.textContent.includes('Settings')) {
+        card.addEventListener('click', function() {
+            let pwd = prompt('Admin password:');
+            if (pwd && AdminPortal.authenticate(pwd)) {
+                let stats = AdminPortal.getStats();
+                alert('Admin Stats - Messages: ' + stats.messages);
+            } else {
+                UIHandler.showNotification('Invalid password');
+            }
+        });
+    }
+});
