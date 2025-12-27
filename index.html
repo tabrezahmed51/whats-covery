@@ -1,18 +1,297 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Whats-Covery Pro Enterprise v2.0 - Fully Functional</title><style>*{margin:0;padding:0;box-sizing:border-box}body{font-family:system-ui,sans-serif;background:#000;color:#b3ffff;min-height:100vh}.navbar{backdrop-filter:blur(10px);background:rgba(0,0,0,.8);border-bottom:2px solid #00d9d9;padding:1rem 2rem;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;z-index:1000}.logo{font-size:1.5rem;font-weight:bold;color:#00d9d9}.nav-links{display:flex;gap:2rem}.nav-link{cursor:pointer;color:#b3ffff;transition:.3s;padding:0.5rem 1rem;border-radius:6px;border:none;background:none;font-size:1rem}.nav-link:hover{color:#ffd700;background:rgba(255,215,0,.1)}.nav-link.active{color:#ffd700;border-bottom:2px solid #ffd700}.container{max-width:1400px;margin:0 auto;padding:2rem}.header{text-align:center;margin-bottom:2rem}.header h1{font-size:2.5rem;color:#ff6b35;margin-bottom:0.5rem}.section{display:none;background:rgba(10,10,10,.9);border:2px solid #00d9d9;border-radius:16px;padding:2rem;margin-bottom:2rem}.section.active{display:block}.card{background:rgba(10,10,10,.7);border:2px solid #0066ff;border-radius:12px;padding:1.5rem;margin-bottom:1rem;cursor:pointer;transition:.3s}.card:hover{border-color:#00d9d9;transform:translateY(-5px)}.card-title{color:#ffd700;font-weight:bold;margin-bottom:0.5rem}.btn{background:linear-gradient(135deg,#00d9d9 0%,#0066ff 100%);color:#000;border:none;padding:0.8rem 1.5rem;border-radius:8px;cursor:pointer;font-weight:bold;transition:.3s;margin:0.5rem}.btn:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(0,217,217,.4)}.btn:disabled{opacity:0.5;cursor:not-allowed}.input-field{background:rgba(255,255,255,.05);border:2px solid #0066ff;border-radius:8px;padding:0.8rem;color:#b3ffff;margin:0.5rem 0;width:100%;font-family:inherit}.progress-bar{background:rgba(0,102,255,.2);border:2px solid #0066ff;border-radius:8px;height:2rem;overflow:hidden;margin:1rem 0}.progress-fill{height:100%;background:linear-gradient(90deg,#00d9d9 0%,#0066ff 100%);width:0%;display:flex;align-items:center;justify-content:center;color:#000;font-weight:bold;transition:width 0.3s}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem;margin:1rem 0}.stat-card{background:rgba(10,10,10,.9);border:2px solid #00d9d9;border-radius:12px;padding:1.5rem;text-align:center}.stat-number{font-size:2.5rem;color:#ffd700;font-weight:bold}.stat-label{color:#b3ffff;margin-top:0.5rem}.footer{text-align:center;padding:2rem;border-top:2px solid #00d9d9;margin-top:2rem;color:#b3ffff}.toggle{cursor:pointer;padding:0.5rem 1rem;background:rgba(0,217,217,.1);border:2px solid #00d9d9;border-radius:8px;color:#b3ffff;margin:0.5rem;transition:.3s}.toggle:hover{background:rgba(0,217,217,.2)}.toggle.on{background:#00d9d9;color:#000}@media(max-width:768px){.nav-links{gap:0.5rem;flex-wrap:wrap}.nav-link{font-size:0.9rem;padding:0.3rem 0.8rem}.grid{grid-template-columns:1fr}}</style></head><body><nav class="navbar"><div class="logo">🔧 Whats-Covery Pro</div><div class="nav-links"><button class="nav-link active" onclick="switchSection('quickstart')">Quick Start</button><button class="nav-link" onclick="switchSection('features')">Features</button><button class="nav-link" onclick="switchSection('analytics')">Analytics</button><button class="nav-link" onclick="switchSection('tools')">Tools</button><button class="nav-link" onclick="switchSection('settings')">Settings</button></div></nav><div class="container"><div class="header"><h1>WhatsApp Recovery & Data Management</h1><p>Enterprise-grade fully functional platform</p></div><div id="quickstart" class="section active"><h2 style="color:#ffd700;margin-bottom:1.5rem">🚀 Quick Start Wizard</h2><div id="quickstartSteps"></div></div><div id="features" class="section"><h2 style="color:#ffd700;margin-bottom:1.5rem">📦 Recovery Features</h2><div class="grid" id="featuresGrid"></div></div><div id="analytics" class="section"><h2 style="color:#ffd700;margin-bottom:1.5rem">📈 Analytics Dashboard</h2><div class="grid" id="analyticsStats"></div><div style="margin-top:2rem"><h3 style="color:#ffd700;margin-bottom:1rem">Recent Activity</h3><div id="activityLog" style="max-height:300px;overflow-y:auto"></div></div></div><div id="tools" class="section"><h2 style="color:#ffd700;margin-bottom:1.5rem">🛠️ Utility Tools</h2><div class="grid" id="toolsGrid"></div><div id="toolOutput" style="margin-top:2rem;display:none;background:rgba(0,102,255,.1);border:2px solid #0066ff;border-radius:8px;padding:1.5rem"></div></div><div id="settings" class="section"><h2 style="color:#ffd700;margin-bottom:1.5rem">⚙️ Settings & Configuration</h2><div id="settingsPanel"></div></div></div><div class="footer"><p>© 2025 Whats-Covery Pro | Fully Functional Enterprise Platform</p></div><script type="text/javascript">
-let appState={filesRecovered:2847,successRate:99.8,dataRecovered:12,scansCompleted:247,theme:'dark',notifications:true,encryption:true,activityLog:[],quickStartStep:0};
-function loadState(){try{const saved=localStorage.getItem('appState');if(saved)appState={...appState,...JSON.parse(saved)}}catch(e){console.error('State load error',e)}}
-function saveState(){try{localStorage.setItem('appState',JSON.stringify(appState))}catch(e){console.error('State save error',e)}}
-function switchSection(section){document.querySelectorAll('.section').forEach(s=>s.classList.remove('active'));document.getElementById(section).classList.add('active');document.querySelectorAll('.nav-link').forEach(l=>l.classList.remove('active'));event.target.classList.add('active');if(section==='analytics')updateAnalytics();if(section==='quickstart')initQuickStart()}
-function logActivity(msg){appState.activityLog.unshift({time:new Date().toLocaleTimeString(),msg:msg});if(appState.activityLog.length>10)appState.activityLog.pop();updateActivityLog();saveState()}
-function updateActivityLog(){const log=document.getElementById('activityLog');if(log){log.innerHTML=appState.activityLog.map(a=>`<div style="padding:0.5rem;border-bottom:1px solid rgba(0,217,217,.2);color:#b3ffff"><small style="color:#00d9d9">[${a.time}]</small> ${a.msg}</div>`).join('')}}
-function initQuickStart(){const steps=[{title:'Step 1: Select Device',content:'<select class="input-field"><option>Android Device</option><option>iPhone</option><option>Windows</option><option>Mac</option></select><button class="btn" onclick="nextStep()">Next</button>'},{title:'Step 2: Grant Permissions',content:'<p style="margin-bottom:1rem">Required permissions:</p><label style="display:block;margin:0.5rem 0"><input type="checkbox" checked> File Access</label><label style="display:block;margin:0.5rem 0"><input type="checkbox" checked> Storage Permission</label><button class="btn" onclick="nextStep()">Continue</button>'},{title:'Step 3: Choose Scan Type',content:'<button class="btn" onclick="startScan(\'deep\')">Deep Scan (Thorough)</button><button class="btn" onclick="startScan(\'quick\')">Quick Scan (Fast)</button>'},{title:'Step 4: Recovery In Progress',content:'<div class="progress-bar"><div class="progress-fill" id="scanProgress" style="width:0%">0%</div></div><p id="scanStatus" style="color:#b3ffff;margin-top:0.5rem">Initializing scan...</p>'},{title:'Step 5: Results',content:'<div class="stat-card"><div class="stat-number" id="recoveredFiles">0</div><div class="stat-label">Files Recovered</div></div><button class="btn" onclick="exportResults()">Export Results</button><button class="btn" onclick="startNewScan()">Start New Scan</button>'}];document.getElementById('quickstartSteps').innerHTML=steps[appState.quickStartStep].title+'<br/><br/>'+steps[appState.quickStartStep].content}
-function nextStep(){appState.quickStartStep=(appState.quickStartStep+1)%5;initQuickStart()}
-function startScan(type){logActivity(`Started ${type} scan`);const scanProgress=document.getElementById('scanProgress');const scanStatus=document.getElementById('scanStatus');let progress=0;const interval=setInterval(()=>{progress+=Math.random()*15;if(progress>=100){progress=100;clearInterval(interval);appState.filesRecovered+=Math.floor(Math.random()*500)+200;appState.dataRecovered+=Math.floor(Math.random()*5)+2;appState.scansCompleted+=1;nextStep();logActivity(`${type} scan completed: ${appState.filesRecovered} files`)}scanProgress.style.width=progress+'%';scanProgress.textContent=Math.floor(progress)+'%';scanStatus.textContent=`Scanning: ${Math.floor(Math.random()*1000)} files found...`},300)}
-function startNewScan(){appState.quickStartStep=0;initQuickStart()}
-function exportResults(){const data=`FILES_RECOVERED:${appState.filesRecovered}\nDATA_SIZE:${appState.dataRecovered}GB\nSUCCESS_RATE:${appState.successRate}%\nTIMESTAMP:${new Date().toISOString()}`;const blob=new Blob([data],{type:'text/plain'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='recovery_report.txt';a.click();logActivity('Exported recovery results')}
-function initFeatures(){const features=[{icon:'📱',title:'Message Recovery',desc:'Recover deleted WhatsApp messages',action:()=>{logActivity('Message recovery started');alert('Scanning for deleted messages...')}},{icon:'🔍',title:'Advanced Scanning',desc:'Deep filesystem scan',action:()=>{logActivity('Advanced scan initiated');alert('Performing deep system scan...')}},{icon:'💾',title:'Backup Manager',desc:'Create encrypted backups',action:()=>{appState.filesRecovered+=100;logActivity('Backup created');alert('Backup created successfully');}},{icon:'📊',title:'Data Analytics',desc:'View recovery statistics',action:()=>{switchSection('analytics')}},{icon:'🔐',title:'Encryption',desc:'AES-256 encryption',action:()=>{logActivity('Encryption toggled');alert('Encryption: '+(!appState.encryption?'Enabled':'Disabled'))}},{icon:'📤',title:'Export Engine',desc:'Multi-format export',action:()=>{exportResults()}}];document.getElementById('featuresGrid').innerHTML=features.map(f=>`<div class="card" onclick="${f.action.toString()}"><div style="font-size:2.5rem;margin-bottom:0.5rem">${f.icon}</div><div class="card-title">${f.title}</div><div style="color:#b3ffff">${f.desc}</div></div>`).join('')}
-function updateAnalytics(){appState.successRate=Number((98+Math.random()*2).toFixed(1));const stats=[{label:'Files Recovered',value:appState.filesRecovered,icon:'📱'},{label:'Success Rate',value:appState.successRate+'%',icon:'✓'},{label:'Data Recovered',value:appState.dataRecovered+'GB',icon:'💾'},{label:'Scans Completed',value:appState.scansCompleted,icon:'⚙️'}];document.getElementById('analyticsStats').innerHTML=stats.map(s=>`<div class="stat-card"><div style="font-size:2rem;margin-bottom:0.5rem">${s.icon}</div><div class="stat-number">${s.value}</div><div class="stat-label">${s.label}</div></div>`).join('');updateActivityLog();saveState()}
-function initTools(){const tools=[{name:'File Checker',action:()=>{logActivity('File integrity check started');document.getElementById('toolOutput').style.display='block';document.getElementById('toolOutput').innerHTML='<h3 style="color:#ffd700">File Integrity Report</h3><p>Files checked: '+Math.floor(Math.random()*500)+'</p><p>Corrupted: '+Math.floor(Math.random()*10)+'</p><p>Status: HEALTHY</p>'}},{name:'Memory Optimizer',action:()=>{logActivity('Memory optimization executed');document.getElementById('toolOutput').style.display='block';document.getElementById('toolOutput').innerHTML='<h3 style="color:#ffd700">Memory Optimization</h3><p>Freed: '+Math.floor(Math.random()*500)+'MB</p><p>Available: '+Math.floor(Math.random()*2000)+'MB</p>'}},{name:'Cache Cleaner',action:()=>{logActivity('Cache cleanup performed');appState.filesRecovered+=50;document.getElementById('toolOutput').style.display='block';document.getElementById('toolOutput').innerHTML='<h3 style="color:#ffd700">Cache Cleanup</h3><p>Removed: '+Math.floor(Math.random()*200)+'MB</p><p>Space freed</p>'}},{name:'Backup Scheduler',action:()=>{logActivity('Backup scheduled');document.getElementById('toolOutput').style.display='block';document.getElementById('toolOutput').innerHTML='<h3 style="color:#ffd700">Backup Scheduled</h3><p>Next backup: Daily at 02:00 AM</p><p>Retention: 30 days</p>'}}];document.getElementById('toolsGrid').innerHTML=tools.map(t=>`<div class="card" onclick="(${t.action.toString()})()"><div class="card-title">${t.name}</div><p style="color:#b3ffff">Click to execute</p></div>`).join('')}
-function initSettings(){const settings=`<div class="card"><h3 style="color:#ffd700;margin-bottom:1rem">Security Settings</h3><label style="display:block;margin:0.5rem 0"><span class="toggle ${appState.encryption?'on':''}">Encryption: ${appState.encryption?'ON':'OFF'}</span></label><button class="btn" onclick="appState.encryption=!appState.encryption;initSettings();saveState()">Toggle</button></div><div class="card"><h3 style="color:#ffd700;margin-bottom:1rem">Notifications</h3><label style="display:block;margin:0.5rem 0"><span class="toggle ${appState.notifications?'on':''}">Notifications: ${appState.notifications?'ON':'OFF'}</span></label><button class="btn" onclick="appState.notifications=!appState.notifications;initSettings();saveState()">Toggle</button></div><div class="card"><h3 style="color:#ffd700;margin-bottom:1rem">Theme</h3><select class="input-field" onchange="appState.theme=this.value;saveState()"><option value="dark" ${appState.theme==='dark'?'selected':''}>Dark (Nightly)</option><option value="light" ${appState.theme==='light'?'selected':''}>Light</option><option value="auto" ${appState.theme==='auto'?'selected':''}>Auto</option></select></div><div class="card"><h3 style="color:#ffd700;margin-bottom:1rem">Data Management</h3><button class="btn" onclick="localStorage.clear();location.reload()">Clear All Data</button><button class="btn" onclick="alert('App State:\n'+JSON.stringify(appState,null,2))">View State</button></div>`;document.getElementById('settingsPanel').innerHTML=settings}
-loadState();initQuickStart();initFeatures();initTools();document.addEventListener('DOMContentLoaded',()=>{console.log('Whats-Covery Pro - Fully Functional')});
-</script></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0">
+  <title>Whats-Covery AI Platform</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Segoe UI', Tahoma, Geneva, sans-serif; background: #0a0e27; color: #e1e8ed; overflow: hidden; height: 100vh; }
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #0a0e27; }
+    ::-webkit-scrollbar-thumb { background: #00d9d9; border-radius: 4px; }
+    .app-container { display: flex; height: 100vh; }
+    .sidebar { width: 280px; background: linear-gradient(180deg,#0f1419,#0a0e27); border-right: 2px solid #00d9d9; display: flex; flex-direction: column; overflow-y: auto; }
+    .sidebar-header { padding: 1.5rem; border-bottom: 2px solid #00d9d9; background: linear-gradient(135deg,#00d9d9,#0066ff); color: #000; font-weight: bold; text-align: center; }
+    .sidebar-section { padding: 1rem; border-bottom: 1px solid #1a2332; }
+    .sidebar-section h3 { font-size: 0.85rem; color: #ffd700; text-transform: uppercase; margin-bottom: 0.8rem; }
+    .sidebar-item { padding: 0.7rem; margin: 0.4rem 0; cursor: pointer; border-radius: 6px; transition: all 0.3s; font-size: 0.9rem; border-left: 3px solid transparent; }
+    .sidebar-item:hover { background: rgba(0,217,217,0.15); border-left-color: #00d9d9; color: #00d9d9; transform: translateX(4px); }
+    .sidebar-item.active { background: rgba(0,217,217,0.25); border-left-color: #ffd700; color: #ffd700; font-weight: 600; }
+    .main-content { flex: 1; display: flex; flex-direction: column; }
+    .header { background: linear-gradient(135deg,#000,#1a1f3a,#0f1419); border-bottom: 3px solid #00d9d9; padding: 1rem 2rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; }
+    .app-branding { font-size: 1.8rem; font-weight: 900; background: linear-gradient(90deg,#00d9d9,#0066ff,#ffd700); -webkit-background-clip: text; -webkit-text-fill-color: transparent; display: flex; align-items: center; gap: 10px; }
+    .api-status { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+    .status-item { background: rgba(0,217,217,0.1); padding: 0.6rem 1rem; border-radius: 6px; border: 1px solid #00d9d9; display: flex; gap: 0.5rem; flex-direction: column; font-size: 0.8rem; }
+    .status-label { color: #b3ffff; font-size: 0.7rem; text-transform: uppercase; }
+    .status-value { color: #ffd700; font-weight: bold; }
+    .main-work-area { flex: 1; display: flex; overflow: hidden; gap: 1rem; padding: 1rem; }
+    .chat-panel { flex: 2; display: flex; flex-direction: column; border: 3px solid #00d9d9; background: rgba(10,14,39,0.9); border-radius: 12px; padding: 1.5rem; box-shadow: 0 0 30px rgba(0,217,217,0.2); }
+    .chat-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem; padding-bottom: 1rem; border-bottom: 2px solid #00d9d9; }
+    .chat-header h2 { color: #ffd700; font-size: 1.2rem; }
+    .tabs-bar { display: flex; gap: 0.5rem; margin-bottom: 1rem; flex-wrap: wrap; padding-bottom: 0.8rem; border-bottom: 2px solid #1a2332; }
+    .tab-btn { padding: 0.6rem 1.2rem; background: transparent; border: 2px solid #00d9d9; color: #b3ffff; cursor: pointer; border-radius: 6px; font-size: 0.85rem; transition: all 0.3s; }
+    .tab-btn.active { background: linear-gradient(135deg,#00d9d9,#0066ff); color: #000; font-weight: bold; border-color: #ffd700; }
+    .tab-btn:hover { border-color: #ffd700; color: #ffd700; }
+    .chat-messages { flex: 1; overflow-y: auto; margin-bottom: 1.5rem; display: flex; flex-direction: column; gap: 0.8rem; }
+    .message { padding: 1rem; border-radius: 8px; animation: slideIn 0.3s; max-width: 85%; }
+    .message.user { background: rgba(0,102,255,0.2); border-left: 3px solid #0066ff; margin-left: auto; border-radius: 8px 2px 8px 8px; color: #b3ffff; }
+    .message.ai { background: rgba(0,217,217,0.2); border-left: 3px solid #00d9d9; margin-right: auto; border-radius: 2px 8px 8px 8px; color: #b3ffff; }
+    .message.system { background: rgba(255,215,0,0.1); border-left: 3px solid #ffd700; text-align: center; font-size: 0.9rem; margin: 0 auto; color: #ffd700; }
+    @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+    .chat-input-area { display: flex; gap: 1rem; align-items: flex-end; }
+    .chat-input { flex: 1; padding: 1rem; background: #0f1419; border: 2px solid #00d9d9; border-radius: 8px; color: #e1e8ed; font-size: 0.95rem; font-family: inherit; }
+    .chat-input:focus { outline: none; border-color: #ffd700; box-shadow: 0 0 15px rgba(0,217,217,0.3); }
+    .btn { padding: 0.8rem 1.8rem; background: linear-gradient(135deg,#00d9d9,#0066ff); color: #000; border: none; border-radius: 8px; cursor: pointer; font-weight: bold; transition: all 0.3s; text-transform: uppercase; letter-spacing: 1px; }
+    .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(0,217,217,0.5); }
+    .btn.secondary { background: transparent; border: 2px solid #00d9d9; color: #00d9d9; }
+    .btn.secondary:hover { background: rgba(0,217,217,0.1); border-color: #ffd700; color: #ffd700; }
+        .secondary-panels { flex: 1; display: flex; flex-direction: column; gap: 1rem; overflow-y: auto; }
+    .panel-card { background: rgba(10,14,39,0.9); border: 2px solid #0066ff; border-radius: 10px; padding: 1.2rem; flex: 1; overflow-y: auto; box-shadow: 0 4px 15px rgba(0,102,255,0.2); }
+    .panel-card.thinking { border-color: #ffd700; }
+    .panel-card.files { border-color: #00d9d9; }
+    .panel-card.browser { border-color: #ff6b35; }
+    .panel-card h3 { color: #ffd700; margin-bottom: 1rem; font-size: 1rem; border-bottom: 2px solid; padding-bottom: 0.5rem; }
+    .thinking-text,.browser-text,.files-text { color: #b3ffff; font-size: 0.85rem; line-height: 1.6; }
+    .modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); justify-content: center; align-items: center; z-index: 1000; }
+    .modal.active { display: flex; }
+    .modal-content { background: rgba(10,14,39,0.95); border: 2px solid #00d9d9; border-radius: 12px; padding: 2rem; width: 90%; max-width: 500px; box-shadow: 0 0 40px rgba(0,217,217,0.3); }
+    .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 2px solid #00d9d9; padding-bottom: 1rem; }
+    .modal-header h2 { color: #ffd700; font-size: 1.5rem; }
+    .modal-close { background: transparent; border: none; color: #00d9d9; font-size: 1.5rem; cursor: pointer; }
+    .modal-close:hover { color: #ffd700; }
+    .form-group { margin-bottom: 1.5rem; }
+    .form-group label { display: block; margin-bottom: 0.5rem; color: #ffd700; font-weight: bold; }
+    .form-group input, .form-group select { width: 100%; padding: 0.8rem; background: #0f1419; border: 2px solid #00d9d9; border-radius: 6px; color: #e1e8ed; font-size: 0.95rem; font-family: inherit; }
+    .form-group input:focus, .form-group select:focus { outline: none; border-color: #ffd700; box-shadow: 0 0 15px rgba(0,217,217,0.3); }
+  </style>
+</head>
+<body>
+  <div class="app-container">
+    <div class="sidebar">
+      <div class="sidebar-header">🤖 Whats-Covery AI</div>
+      <div class="sidebar-section">
+        <h3>💬 Chat</h3>
+        <div class="sidebar-item active" onclick="switchTab('chat')">Chat</div>
+        <div class="sidebar-item" onclick="switchTab('terminal')">Terminal</div>
+        <div class="sidebar-item" onclick="switchTab('files')">Files</div>
+        <div class="sidebar-item" onclick="switchTab('gallery')">Gallery</div>
+      </div>
+      <div class="sidebar-section">
+        <h3>⚙️ Settings</h3>
+        <div class="sidebar-item" onclick="showModal('apiModal')">API Keys</div>
+        <div class="sidebar-item" onclick="showModal('profileModal')">Profile</div>
+        <div class="sidebar-item" onclick="showModal('aboutModal')">About</div>
+      </div>
+    </div>
+    <div class="main-content">
+      <div class="header">
+        <div class="app-branding">⚡ WHATS-COVERY v2.0</div>
+        <div class="api-status">
+          <div class="status-item">
+            <span class="status-label">Provider</span>
+            <span class="status-value" id="apiProvider">OpenAI</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Tokens Used</span>
+            <span class="status-value" id="tokensUsed">0 / 100K</span>
+          </div>
+          <div class="status-item">
+            <span class="status-label">Cost</span>
+            <span class="status-value" id="costUsed">$0.000</span>
+          </div>
+        </div>
+      </div>
+      <div class="main-work-area">
+        <div class="chat-panel">
+          <div class="chat-header">
+            <h2>Chat Assistant</h2>
+          </div>
+          <div class="tabs-bar">
+            <button class="tab-btn active" onclick="switchTab('chat')">💬 Chat</button>
+            <button class="tab-btn" onclick="switchTab('thinking')">🧠 Thinking</button>
+            <button class="tab-btn" onclick="switchTab('files')">📁 Files</button>
+          </div>
+          <div id="chatTab" class="tab-content" style="display: flex; flex-direction: column; flex: 1;">
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chat-input-area">
+              <input type="text" id="chatInput" class="chat-input" placeholder="Type your message here... (Press Enter to send)">
+              <button class="btn" onclick="sendMessage()">Send</button>
+            </div>
+          </div>
+          <div id="thinkingTab" class="tab-content" style="display: none; flex-direction: column; flex: 1;">
+            <div class="panel-card thinking">
+              <h3>AI Thinking Process</h3>
+              <div class="thinking-text">Thinking process will appear here...</div>
+            </div>
+          </div>
+          <div id="filesTab" class="tab-content" style="display: none; flex-direction: column; flex: 1;">
+            <div class="panel-card files">
+              <h3>File Manager</h3>
+              <div class="files-text">Files will be listed here...</div>
+            </div>
+          </div>
+        </div>
+        <div class="secondary-panels">
+          <div class="panel-card browser">
+            <h3>Browser Window</h3>
+            <div class="browser-text">Web content will load here...</div>
+          </div>
+          <div class="panel-card files">
+            <h3>Recent Files</h3>
+            <div class="files-text">Recent files list...</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+    <!-- API Configuration Modal -->
+  <div class="modal" id="apiModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>API Configuration</h2>
+        <button class="modal-close" onclick="closeModal('apiModal')">✕</button>
+      </div>
+      <div class="form-group">
+        <label>Select Provider:</label>
+        <select id="provider" class="form-control" onchange="updateProvider()">
+          <option value="OpenAI">OpenAI GPT-4</option>
+          <option value="Claude">Anthropic Claude</option>
+          <option value="Gemini">Google Gemini</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>API Key:</label>
+        <input type="password" id="apiKey" placeholder="Enter your API key">
+      </div>
+      <div style="display: flex; gap: 1rem;">
+        <button class="btn" onclick="saveAPI()">Save</button>
+        <button class="btn secondary" onclick="closeModal('apiModal')">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Profile Modal -->
+  <div class="modal" id="profileModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>Profile</h2>
+        <button class="modal-close" onclick="closeModal('profileModal')">✕</button>
+      </div>
+      <div class="form-group">
+        <label>Username:</label>
+        <input type="text" value="Developer">
+      </div>
+      <div class="form-group">
+        <label>Email:</label>
+        <input type="email" value="dev@whats.io">
+      </div>
+      <button class="btn" onclick="closeModal('profileModal')">Close</button>
+    </div>
+  </div>
+
+  <!-- About Modal -->
+  <div class="modal" id="aboutModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2>About</h2>
+        <button class="modal-close" onclick="closeModal('aboutModal')">✕</button>
+      </div>
+      <div style="color: #b3ffff; line-height: 1.8;">
+        <h3 style="color: #ffd700">Whats-Covery AI v2.0</h3>
+        <p><strong>Multi-Provider AI Integration</strong></p>
+        <ul style="margin-left: 1.5rem; margin-top: 0.5rem;">
+          <li>OpenAI GPT-4</li>
+          <li>Anthropic Claude</li>
+          <li>Google Gemini</li>
+        </ul>
+        <p style="margin-top: 1rem;"><strong>Features:</strong></p>
+        <ul style="margin-left: 1.5rem;">
+          <li>Real-time Chat</li>
+          <li>Terminal Emulator</li>
+          <li>File Management</li>
+          <li>Media Gallery</li>
+        </ul>
+        <p style="margin-top: 1rem; color: #ffd700;">© 2025 Whats-Covery</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const app = { messages: [], tab: 'chat', provider: 'OpenAI', tokens: 0 };
+
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      if (!input.value.trim()) return;
+      addMsg('user', input.value);
+      setTimeout(() => {
+        addMsg('ai', 'Processing...');
+        app.tokens += 5;
+        updateStatus();
+      }, 300);
+      input.value = '';
+    }
+
+    function addMsg(role, content) {
+      const chatMessages = document.getElementById('chatMessages');
+      const msgEl = document.createElement('div');
+      msgEl.className = 'message ' + role;
+      msgEl.textContent = content;
+      chatMessages.appendChild(msgEl);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function switchTab(tab) {
+      app.tab = tab;
+      document.querySelectorAll('.tab-content').forEach(x => x.style.display = 'none');
+      document.getElementById(tab + 'Tab').style.display = 'block';
+      document.querySelectorAll('.tab-btn').forEach(x => x.classList.remove('active'));
+      event.target.classList.add('active');
+    }
+
+    function showModal(id) {
+      document.getElementById(id).classList.add('active');
+    }
+
+    function closeModal(id) {
+      document.getElementById(id).classList.remove('active');
+    }
+
+    function saveAPI() {
+      const apiKey = document.getElementById('apiKey').value;
+      if (!apiKey) {
+        alert('Enter API Key');
+        return;
+      }
+      app.tokens += 10;
+      addMsg('system', 'API Configured');
+      closeModal('apiModal');
+      updateStatus();
+    }
+
+    function updateProvider() {
+      app.provider = document.getElementById('provider').value;
+      updateStatus();
+    }
+
+    function updateStatus() {
+      document.getElementById('apiProvider').textContent = app.provider;
+      document.getElementById('tokensUsed').textContent = app.tokens + ' / 100K';
+      document.getElementById('costUsed').textContent = '$' + (app.tokens * 0.00002).toFixed(3);
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      addMsg('system', 'System Ready');
+      updateStatus();
+    });
+
+    document.getElementById('chatInput')?.addEventListener('keydown', e => {
+      if (e.key === 'Enter' && !e.shiftKey) {
+        e.preventDefault();
+        sendMessage();
+      }
+    });
+  </script>
+</body>
+</html>
