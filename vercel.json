@@ -1,0 +1,40 @@
+{
+  "projectName": "whats-covery",
+  "public": true,
+  "buildCommand": "echo 'Building static site...'" ,
+  "outputDirectory": "./",
+  "devCommand": "python -m http.server 3000",
+  "framework": "static",
+  "git": {
+    "deploymentEnabled": true,
+    "productionBranch": "main"
+  },
+  "env": {
+    "VERCEL_URL": "@whats-covery-url"
+  },
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=3600, must-revalidate"
+        },
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "SAMEORIGIN"
+        }
+      ]
+    }
+  ]
+}
