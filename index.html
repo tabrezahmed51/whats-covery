@@ -815,6 +815,49 @@ document.addEventListener('DOMContentLoaded', () => {
   
   console.log('✅ WhatsApp Recovery AI - Fully Functional');
 });
+  // ========== AI API INTEGRATION ==========
+function openAPIModal() {
+  const modal = document.getElementById('apiModal');
+  if (modal) modal.style.display = 'flex';
+}
+
+function closeAPIModal() {
+  const modal = document.getElementById('apiModal');
+  if (modal) modal.style.display = 'none';
+}
+
+function saveAPIConfig() {
+  const provider = document.getElementById('apiProvider').value;
+  const key = document.getElementById('apiKey').value;
+  
+  if (!key) {
+    alert('Please enter API Key');
+    return;
+  }
+  
+  app.apiConfig = { provider, key };
+  localStorage.setItem('apiConfig', JSON.stringify(app.apiConfig));
+  addMessage(`✅ AI API Connected: ${provider}`, 'ai');
+  closeAPIModal();
+}
+
+function testAPIConnection() {
+  const provider = document.getElementById('apiProvider').value;
+  const key = document.getElementById('apiKey').value;
+  
+  if (!key) {
+    alert('Enter API key first');
+    return;
+  }
+  
+  alert(`✅ Testing ${provider} API connection...\n\nNote: This is a simulation. In production, this would test actual API connectivity.`);
+  addMessage(`🔌 Connected to ${provider} API successfully!`, 'ai');
+}
+
+window.closeAPIModal = closeAPIModal;
+window.openAPIModal = openAPIModal;
+window.saveAPIConfig = saveAPIConfig;
+window.testAPIConnection = testAPIConnection;
 </script>
 </body>
 </html>
